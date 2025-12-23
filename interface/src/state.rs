@@ -18,8 +18,6 @@ pub struct Pair {
     /// Pool tokens are issued when A or B tokens are deposited.
     /// Pool tokens can be withdrawn back to the original A or B token.
     pub pool_mint: Pubkey,
-    /// Pool token account to receive trading and / or withdrawal fees
-    pub pool_fee_account: Pubkey,
 
     /// All fee information
     pub trade_fee_numerator: u64,
@@ -31,6 +29,23 @@ impl Pair {
     #[inline(always)]
     pub fn is_initialized(&self) -> bool {
         self.is_initialized
+    }
+
+    #[inline(always)]
+    pub fn initialize(
+        &mut self,
+        token_a: &Pubkey,
+        token_b: &Pubkey,
+        pool_mint: &Pubkey,
+        trade_fee_numerator: u64,
+        trade_fee_denominator: u64,
+    ) {
+        self.is_initialized = true;
+        self.token_a = *token_a;
+        self.token_b = *token_b;
+        self.pool_mint = *pool_mint;
+        self.trade_fee_numerator = trade_fee_numerator;
+        self.trade_fee_denominator = trade_fee_denominator;
     }
 
     #[inline(always)]

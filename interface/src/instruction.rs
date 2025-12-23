@@ -8,10 +8,10 @@ pub enum Instruction {
     ///
     /// Accounts expected:
     ///
-    /// 0. `[signer]` The account of the person initializing the pool
+    /// 0. `[writable]` The pool state account
     /// 1. `[]` The token A mint account
     /// 2. `[]` The token B mint account
-    /// 3. `[writable]` The pool state account
+    /// 3. `[signer]` payer
     /// 4. `[]` The rent sysvar
     InitializePool,
 
