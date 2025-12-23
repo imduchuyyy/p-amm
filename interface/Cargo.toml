@@ -3,4 +3,12 @@ name = "p-amm-interface"
 version = "0.1.0"
 edition = "2021"
 
+[lib]
+crate-type = ["rlib"]
+
 [dependencies]
+pinocchio = "0.9.2"
+
+[dev-dependencies]
+strum = "0.27"
+strum_macros = "0.27"
